@@ -1,15 +1,19 @@
 "use client"
 
-import { useState } from "react";
-import NFTGrid from "./nft-grid";
-import { cn } from "@/lib/utils";
-import CollectionGrid from "./collections";
+import Slider from "@/components/collections-slider";
+import MockDataNFTs from "@/components/mock-data-nfts";
 
 export default function Home() {
   return (
-    <div className="container mx-auto p-4 flex flex-col h-screen">
-      <CollectionGrid />
-      {/* <NFTGrid /> */}
+    <div className="flex flex-col gap-20 pt-12 h-screen" style={{ height: "calc(100vh-60px)" }}>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-2xl font-bold px-12">Collections</h1>
+        <Slider />
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-2xl font-bold px-12">Quick add NFTs</h1>
+        <MockDataNFTs />
+      </div>
     </div>
   );
 }

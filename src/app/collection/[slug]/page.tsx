@@ -1,36 +1,20 @@
 "use client"
 
-import React from 'react';
-import { VirtuosoGrid } from 'react-virtuoso';
-import { QueryFunction, QueryFunctionContext, useInfiniteQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import NFTCard from '@/components/nft-card';
-import { useCart } from '@/hooks/use-cart';
-
-interface NFT {
-  cartId: number
-  collection: string
-  contract: string
-  description: string | null
-  display_animation_url: string | null
-  display_image_url: string | null
-  identifier: string
-  image_url: string | null
-  is_disabled: boolean
-  is_nsfw: boolean
-  metadata_url: string | null
-  name: string | null
-  opensea_url: string | null
-  token_standard: string | null
-  updated_at: string
-}
+import React from "react";
+import { VirtuosoGrid } from "react-virtuoso";
+import { QueryFunction, QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
+import axios from "axios";
+import NFTCard from "@/components/nft-card";
+import { useCart } from "@/hooks/use-cart";
+import { Loader } from "lucide-react";
+import { NFT } from "@/types";
 
 interface APIResponse {
   nfts: NFT[];
   next: string | null;
 }
 
-type QueryKey = ['nfts', string];
+type QueryKey = ["nfts", string];
 
 const fetchNFTs: QueryFunction<APIResponse, QueryKey, string> = async ({
   pageParam,
@@ -43,7 +27,7 @@ const fetchNFTs: QueryFunction<APIResponse, QueryKey, string> = async ({
       next: pageParam,
     },
     headers: {
-      'X-API-KEY': 'a61df3d92b424f67a4996a6620fdc0c6',
+      "X-API-KEY": "a61df3d92b424f67a4996a6620fdc0c6",
     },
   });
   return response.data;
@@ -54,7 +38,10 @@ const NFTPage = ({ params }: { params: { slug: string } }) => {
   const { cart, addToCart, removeFromCart } = useCart();
 
   const handleCartClick = (nft: NFT) => {
-    const inCart = cart.some((item: { collection: string, identifier: string }) => `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`);
+    const inCart = cart.some(
+      (item: { collection: string, identifier: string }) =>
+        `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`
+    );
     if (inCart) {
       removeFromCart.mutate(`${nft.cartId}`);
     } else {
@@ -69,9 +56,9 @@ const NFTPage = ({ params }: { params: { slug: string } }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ['nfts', collectionSlug] as const,
+    queryKey: ["nfts", collectionSlug] as const,
     queryFn: fetchNFTs,
-    initialPageParam: '',
+    initialPageParam: "",
     getNextPageParam: (lastPage) => lastPage.next,
   });
 
@@ -83,13 +70,21 @@ const NFTPage = ({ params }: { params: { slug: string } }) => {
 
   const allNFTs = data ? data.pages.flatMap((page) => page.nfts) : [];
 
-  if (status === 'pending') return <div>Loading...</div>;
-  if (status === 'error') return <div>Error fetching NFTs</div>;
+  if (status === "pending") return (
+    <div className="flex items-center justify-center h-screen">
+      <Loader className="h-12 w-12 animate-spin text-primary" />
+    </div>
+  );
+  if (status === "error") return (
+    <div className="flex items-center justify-center h-screen">
+      <h1 className="">Error fetching collections.</h1>
+    </div>
+  );
 
   return (
-    <div className="container mx-auto p-4 flex flex-col h-screen">
+    <div className="flex flex-col pt-12 h-screen" style={{ height: "calc(100vh-60px)" }}>
       <VirtuosoGrid
-        style={{ height: '100%', width: '100%' }}
+        style={{ height: "100%", width: "100%" }}
         totalCount={allNFTs.length}
         overscan={50}
         endReached={loadMore}
@@ -101,12 +96,15 @@ const NFTPage = ({ params }: { params: { slug: string } }) => {
               key={`${nft.collection}-${nft.identifier}`}
               index={index}
               nft={nft}
-              inCart={cart.some((item: { collection: string, identifier: string }) => `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`)}
+              inCart={cart.some(
+                (item: { collection: string, identifier: string }) =>
+                  `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`
+              )}
               handleCartClick={() => handleCartClick(nft)}
             />
           );
         }}
-        listClassName="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        listClassName="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-12"
       />
     </div>
   );

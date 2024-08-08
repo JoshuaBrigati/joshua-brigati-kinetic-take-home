@@ -1,5 +1,5 @@
-import { cartStorage } from '@/lib/cart-storage';
-import { NextRequest, NextResponse } from 'next/server';
+import { cartStorage } from "@/lib/cart-storage";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   const cart = await cartStorage.getCart();
@@ -14,11 +14,11 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const cardId = searchParams.get('cardId');
-  if (cardId === 'all') {
+  const cartId = searchParams.get("cartId");
+  if (cartId === "all") {
     const clearedCart = await cartStorage.clearCart();
     return NextResponse.json(clearedCart);
   }
-  const updatedCart = await cartStorage.removeFromCart(Number(cardId));
+  const updatedCart = await cartStorage.removeFromCart(Number(cartId));
   return NextResponse.json(updatedCart);
 }

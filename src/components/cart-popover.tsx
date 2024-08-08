@@ -74,9 +74,6 @@ const CartPopover = () => {
                         <Trash className="h-4 w-4" />
                       </Button>
                     </div>
-                    <div className="flex grow flex-col items-end gap-1 group-hover:hidden">
-                      
-                    </div>
                   </div>
                 </div>
               </div>
@@ -86,20 +83,15 @@ const CartPopover = () => {
             <div className="flex items-center justify-between gap-4">
               <h3 className="text-base text-grey-50">Total</h3>
               <div className="text-end [&amp;_*]:text-sm">
-                <div className="flex items-center gap-1.5 overflow-hidden">
-                  
-                </div>
                 <div className="muted">
-                  <span>$22</span>
+                  <span>$420</span>
                 </div>
               </div>
             </div>
-            <button
-              className="btn inline-flex shrink-0 whitespace-nowrap items-center border border-transparent justify-center text-sm [&amp;>span]:leading-[inherit] ring-offset-grey-900 transition-colors focus-visible:outline-none disabled:disabled-btn default-btn default-btn-size"
-              type="button"
+            <Button
             >
               Checkout
-            </button>
+            </Button>
           </div>
         </div>
       </PopoverContent>

@@ -8,6 +8,9 @@ const TopNav = () => {
         <Link href="/">
           <h1 className="text-lg font-semibold">NFTS</h1>
         </Link>
+        <Link href="/collections">
+          <h3 className="text-sm">Collections</h3>
+        </Link>
       </div>
       <CartPopover />
     </header>

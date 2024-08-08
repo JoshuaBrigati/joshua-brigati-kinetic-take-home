@@ -22,7 +22,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <div className="flex flex-col">
             <TopNav />
-            <main className="flex flex-1 flex-col gap-4 p-12">
+            <main className="flex flex-1 flex-col">
               {children}
             </main>
           </div>

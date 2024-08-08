@@ -1,21 +1,5 @@
-import { prisma } from './database'
-
-interface NFT {
-  collection: string
-  contract: string
-  description: string | null
-  display_animation_url: string | null
-  display_image_url: string | null
-  identifier: string
-  image_url: string | null
-  is_disabled: boolean
-  is_nsfw: boolean
-  metadata_url: string | null
-  name: string | null
-  opensea_url: string | null
-  token_standard: string | null
-  updated_at: string
-}
+import { NFT } from "@/types";
+import { prisma } from "./database";
 
 export const cartStorage = {
   getCart: async () => {
