@@ -1,5 +1,5 @@
 import Link from "next/link";
-import CartPopover from "./cart-popover";
+import CartPopover from "@/components/cart-popover";
 
 const TopNav = () => {
   return (

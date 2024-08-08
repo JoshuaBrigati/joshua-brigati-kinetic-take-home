@@ -1,5 +1,5 @@
 import { VirtuosoGrid } from "react-virtuoso";
-import NFTCard from "./nft-card";
+import NFTCard from "@/components/nft-card";
 import { useCart } from "@/hooks/use-cart";
 import { NFT } from "@/types";
 import { nfts } from "@/data/nfts";

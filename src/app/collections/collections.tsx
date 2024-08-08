@@ -49,7 +49,7 @@ const CollectionGrid: React.FC = () => {
   const allCollections = data ? data.pages.flatMap((page) => page.collections) : [];
 
   if (status === "pending") return (
-    <div className="flex items-center justify-center h-screen">
+    <div data-testid="loader" className="flex items-center justify-center h-screen">
       <Loader className="h-12 w-12 animate-spin text-primary" />
     </div>
   );

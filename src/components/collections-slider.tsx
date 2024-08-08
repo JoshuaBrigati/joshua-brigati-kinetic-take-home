@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import CollectionCard from "./collection-card"
@@ -18,9 +18,6 @@ export default function Slider() {
       initial: 0,
       slideChanged(slider) {
         setCurrentSlide(slider.track.details.rel)
-      },
-      created() {
-        setLoaded(true)
       },
     },
     [
@@ -55,6 +52,10 @@ export default function Slider() {
     ]
   )
 
+  useEffect(() => {
+    setLoaded(true)
+  }, [])
+
   return (
     <div className="relative px-12">
       <div ref={sliderRef} className="keen-slider">
@@ -67,15 +68,13 @@ export default function Slider() {
       {loaded && instanceRef.current && (
           <>
             <ArrowLeftCircle
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.prev()
-              }
+              data-testid="arrow-left"
+              onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
               className="h-6 w-6 absolute top-1/2 left-4 transform -translate-y-1/2 opacity-50 transition-opacity hover:opacity-100 hover:cursor-pointer"
             />
             <ArrowRightCircle
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.next()
-              }
+              data-testid="arrow-right"
+              onClick={(e: any) => e.stopPropagation() || instanceRef.current?.next()}
               className="h-6 w-6 absolute top-1/2 right-4 transform -translate-y-1/2 opacity-50 transition-opacity hover:opacity-100 hover:cursor-pointer"
             />
           </>

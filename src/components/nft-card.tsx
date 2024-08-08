@@ -19,7 +19,7 @@ const NFTCard = ({
 }: NFTCardProps) => {
   return (
     <div className="group relative overflow-hidden">
-      <div className={cn(
+      <div data-testid="nft-card" className={cn(
         "overflow-hidden rounded-lg bg-grey-700 shadow-sm border-[2px] relative border-grey-700",
         inCart ? "border-[2px] border-primary" : "border-grey-700"
       )}>
@@ -46,6 +46,7 @@ const NFTCard = ({
               className="whitespace-nowrap ring-offset-grey-900 focus-visible:outline-none h-8 w-8 rounded-full border-grey-0/[0.16] bg-grey-700/60 p-0 text-primary duration-300 hover:bg-grey-700/85"
               type="button"
               onClick={() => handleCartClick(index)}
+              data-testid={`remove-from-cart-${nft.identifier}`}
             >
               <Check className="h-4 w-4" />
               <span className="sr-only">Remove from cart</span>
@@ -55,6 +56,7 @@ const NFTCard = ({
               className="ring-offset-grey-900 focus-visible:outline-none h-8 w-8 rounded-full border-grey-0/[0.16] bg-grey-700/[0.6] p-0 text-primary duration-300 hover:bg-grey-700/[0.85] scale-0 transition-transform ease-out group-hover:scale-100"
               type="button"
               onClick={() => handleCartClick(index)}
+              data-testid={`add-to-cart-${nft.identifier}`}
             >
               <Plus className="h-4 w-4" />
               <span className="sr-only">Add to cart</span>

@@ -71,7 +71,7 @@ const NFTPage = ({ params }: { params: { slug: string } }) => {
   const allNFTs = data ? data.pages.flatMap((page) => page.nfts) : [];
 
   if (status === "pending") return (
-    <div className="flex items-center justify-center h-screen">
+    <div data-testid="loader" className="flex items-center justify-center h-screen">
       <Loader className="h-12 w-12 animate-spin text-primary" />
     </div>
   );
@@ -84,6 +84,7 @@ const NFTPage = ({ params }: { params: { slug: string } }) => {
   return (
     <div className="flex flex-col pt-12 h-screen" style={{ height: "calc(100vh-60px)" }}>
       <VirtuosoGrid
+        data-testid="virtuoso-grid"
         style={{ height: "100%", width: "100%" }}
         totalCount={allNFTs.length}
         overscan={50}
