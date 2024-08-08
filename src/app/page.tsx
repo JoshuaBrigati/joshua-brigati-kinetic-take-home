@@ -1,12 +1,15 @@
 "use client"
 
+import { useState } from "react";
 import NFTGrid from "./nft-grid";
+import { cn } from "@/lib/utils";
+import CollectionGrid from "./collections";
 
 export default function Home() {
   return (
     <div className="container mx-auto p-4 flex flex-col h-screen">
-      <h1 className="text-3xl font-bold mb-4">NFT Collection</h1>
-      <NFTGrid />
+      <CollectionGrid />
+      {/* <NFTGrid /> */}
     </div>
   );
 }
