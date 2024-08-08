@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ReactQueryProvider from "@/providers/react-query";
+import TopNav from "@/components/top-nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ReactQueryProvider>
+          <div className="flex flex-col">
+            <TopNav />
+            <main className="flex flex-1 flex-col gap-4 p-12">
+              {children}
+            </main>
+          </div>
+        </ReactQueryProvider>
+      </body>
     </html>
   );
 }
