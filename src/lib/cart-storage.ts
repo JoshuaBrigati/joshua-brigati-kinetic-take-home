@@ -1,22 +1,62 @@
-interface CartItem {
-  nftId: string;
-  index: number;
+import { prisma } from './database'
+
+interface NFT {
+  collection: string
+  contract: string
+  description: string | null
+  display_animation_url: string | null
+  display_image_url: string | null
+  identifier: string
+  image_url: string | null
+  is_disabled: boolean
+  is_nsfw: boolean
+  metadata_url: string | null
+  name: string | null
+  opensea_url: string | null
+  token_standard: string | null
+  updated_at: string
 }
 
-let cart: CartItem[] = [];
-
 export const cartStorage = {
-  getCart: () => cart,
-  addToCart: (item: CartItem) => {
-    cart.push(item);
-    return cart;
+  getCart: async () => {
+    try {
+      return await prisma.cart.findMany();
+    } catch (error) {
+      console.error("Error getting cart:", error);
+      return [];
+    }
   },
-  removeFromCart: (nftId: string) => {
-    cart = cart.filter(item => item.nftId !== nftId);
-    return cart;
+  addToCart: async (item: NFT) => {
+    try {
+      await prisma.cart.create({
+        data: {
+          ...item
+        },
+      });
+      return await prisma.cart.findMany();
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      return [];
+    }
   },
-  clearCart: () => {
-    cart = [];
-    return cart;
+  removeFromCart: async (cartId: number) => {
+    try {
+      await prisma.cart.deleteMany({
+        where: { cartId },
+      });
+      return await prisma.cart.findMany();
+    } catch (error) {
+      console.error("Error removing from cart:", error);
+      return [];
+    }
+  },
+  clearCart: async () => {
+    try {
+      await prisma.cart.deleteMany();
+      return [];
+    } catch (error) {
+      console.error("Error clearing cart:", error);
+      return [];
+    }
   }
 };

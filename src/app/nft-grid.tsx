@@ -8,6 +8,7 @@ import NFTCard from '@/components/nft-card';
 import { useCart } from '@/hooks/use-cart';
 
 interface NFT {
+  cartId: number
   collection: string
   contract: string
   description: string | null
@@ -45,10 +46,10 @@ const fetchNFTs = async ({ pageParam = '' }: QueryFunctionContext): Promise<APIR
 const NFTGrid = () => {
   const { cart, addToCart, removeFromCart } = useCart();
 
-  const handleCartClick = (nft: NFT, index: number) => {
+  const handleCartClick = (nft: NFT) => {
     const inCart = cart.some((item: { collection: string, identifier: string }) => `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`);
     if (inCart) {
-      removeFromCart.mutate(nft.identifier);
+      removeFromCart.mutate(`${nft.cartId}`);
     } else {
       addToCart.mutate({ ...nft });
     }
@@ -92,7 +93,7 @@ const NFTGrid = () => {
             index={index}
             nft={nft}
             inCart={cart.some((item: { collection: string, identifier: string }) => `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`)}
-            handleCartClick={() => handleCartClick(nft, index)}
+            handleCartClick={() => handleCartClick(nft)}
           />
         );
       }}

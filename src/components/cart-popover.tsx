@@ -69,19 +69,13 @@ const CartPopover = () => {
                       <Button
                         variant={"secondary"}
                         size={"icon"}
-                        onClick={() => removeFromCart.mutate(`${item.collection}-${item.identifier}`)}
+                        onClick={() => removeFromCart.mutate(`${item.cartId}`)}
                       >
                         <Trash className="h-4 w-4" />
                       </Button>
                     </div>
                     <div className="flex grow flex-col items-end gap-1 group-hover:hidden">
-                      <div className="flex items-center gap-1.5 overflow-hidden">
-                        <span><span>0.84</span> </span>
-                        <img
-                          alt="Logo of ESDT token EGLD" loading="lazy" width="16" height="16" decoding="async" data-nimg="1" className="rounded-full bg-grey-1000" src="https://media.xoxno.com/tokens/EGLD/logo.png"
-                        style={{color: "transparent", height: "16px"}} />
-                      </div>
-                      <span className="muted"><span>$22</span></span>
+                      
                     </div>
                   </div>
                 </div>
@@ -93,11 +87,7 @@ const CartPopover = () => {
               <h3 className="text-base text-grey-50">Total</h3>
               <div className="text-end [&amp;_*]:text-sm">
                 <div className="flex items-center gap-1.5 overflow-hidden">
-                  <span><span>0.84</span> EGLD</span>
-                  <img alt="Logo of ESDT token EGLD" loading="lazy" width="16" height="16" decoding="async" data-nimg="1"
-                    className="rounded-full bg-grey-1000" src="https://media.xoxno.com/tokens/EGLD/logo.png"
-                    style={{color: "transparent", height: "16px"}}
-                  />
+                  
                 </div>
                 <div className="muted">
                   <span>$22</span>

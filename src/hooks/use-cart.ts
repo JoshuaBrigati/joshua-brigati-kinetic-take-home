@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
 interface NFT {
+  cartId: number
   collection: string
   contract: string
   description: string | null
@@ -35,7 +36,7 @@ export function useCart() {
   });
 
   const removeFromCart = useMutation({
-    mutationFn: (nftId: string) => axios.delete(`/api/cart?nftId=${nftId}`),
+    mutationFn: (cartId: string) => axios.delete(`/api/cart?cardId=${cartId}`),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['cart'] }),
   });
 
