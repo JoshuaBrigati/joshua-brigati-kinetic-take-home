@@ -36,6 +36,7 @@ const fetchNFTs: QueryFunction<APIResponse, QueryKey, string> = async ({
 const NFTPage = ({ params }: { params: { slug: string } }) => {
   const collectionSlug = params.slug;
   const { cart, addToCart, removeFromCart } = useCart();
+  console.log("🚀 ~ NFTPage ~ cart:", cart)
 
   const handleCartClick = (nft: NFT) => {
     const inCart = cart.some(
@@ -43,7 +44,12 @@ const NFTPage = ({ params }: { params: { slug: string } }) => {
         `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`
     );
     if (inCart) {
-      removeFromCart.mutate(`${nft.cartId}`);
+      const cartItem = cart.find(
+        (item: { collection: string, identifier: string }) =>
+          `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`
+      );
+      if (!cartItem) return;
+      removeFromCart.mutate(`${cartItem.cartId}`);
     } else {
       addToCart.mutate({ ...nft });
     }

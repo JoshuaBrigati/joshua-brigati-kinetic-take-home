@@ -41,7 +41,7 @@ describe("NFTCard", () => {
     const mockHandleCartClick = jest.fn();
     render(<NFTCard index={0} nft={mockNFT} inCart={false} handleCartClick={mockHandleCartClick} />);
     fireEvent.click(screen.getByRole("button", { name: /add to cart/i }));
-    expect(mockHandleCartClick).toHaveBeenCalledWith(0);
+    expect(mockHandleCartClick).toHaveBeenCalledWith(mockNFT);
   });
 
   it(`displays "Remove from cart" button when inCart is true`, () => {

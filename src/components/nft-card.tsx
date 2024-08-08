@@ -8,7 +8,7 @@ interface NFTCardProps {
   index: number;
   nft: NFT;
   inCart: boolean;
-  handleCartClick: (index: number) => void;
+  handleCartClick: (nft: NFT) => void;
 }
 
 const NFTCard = ({
@@ -45,7 +45,7 @@ const NFTCard = ({
             <Button
               className="whitespace-nowrap ring-offset-grey-900 focus-visible:outline-none h-8 w-8 rounded-full border-grey-0/[0.16] bg-grey-700/60 p-0 text-primary duration-300 hover:bg-grey-700/85"
               type="button"
-              onClick={() => handleCartClick(index)}
+              onClick={() => handleCartClick(nft)}
               data-testid={`remove-from-cart-${nft.identifier}`}
             >
               <Check className="h-4 w-4" />
@@ -55,7 +55,7 @@ const NFTCard = ({
             <Button
               className="ring-offset-grey-900 focus-visible:outline-none h-8 w-8 rounded-full border-grey-0/[0.16] bg-grey-700/[0.6] p-0 text-primary duration-300 hover:bg-grey-700/[0.85] scale-0 transition-transform ease-out group-hover:scale-100"
               type="button"
-              onClick={() => handleCartClick(index)}
+              onClick={() => handleCartClick(nft)}
               data-testid={`add-to-cart-${nft.identifier}`}
             >
               <Plus className="h-4 w-4" />

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --primary: 87, 96%, 65%;
+  --primary: 335, 100%, 62%;
   --destructive: 0, 85%, 65%;
   --grey-0: 0, 0%, 100%;
   --grey-50: 0, 0%, 81.6%;

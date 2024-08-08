@@ -15,6 +15,20 @@ export default function Slider() {
         perView: 3,
         spacing: 12,
       },
+      breakpoints: {
+        "(max-width: 768px)": {
+          slides: {
+            perView: 2,
+            spacing: 10,
+          },
+        },
+        "(max-width: 500px)": {
+          slides: {
+            perView: 1,
+            spacing: 8,
+          },
+        },
+      },
       initial: 0,
       slideChanged(slider) {
         setCurrentSlide(slider.track.details.rel)

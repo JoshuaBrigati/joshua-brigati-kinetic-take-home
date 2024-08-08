@@ -13,7 +13,12 @@ const MockDataNFTs = () => {
         `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`
     );
     if (inCart) {
-      removeFromCart.mutate(`${nft.cartId}`);
+      const cartItem = cart.find(
+        (item: { collection: string, identifier: string }) =>
+          `${nft.collection}-${nft.identifier}` === `${item.collection}-${item.identifier}`
+      );
+      if (!cartItem) return;
+      removeFromCart.mutate(`${cartItem.cartId}`);
     } else {
       addToCart.mutate({ ...nft });
     }
@@ -39,7 +44,7 @@ const MockDataNFTs = () => {
             />
           );
         }}
-        listClassName="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-12"
+        listClassName="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 px-12"
       />
     </div>
   )
