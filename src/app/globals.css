@@ -3,31 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --primary: 87, 96%, 65%;
+  --destructive: 0, 85%, 65%;
+  --grey-0: 0, 0%, 100%;
+  --grey-50: 0, 0%, 81.6%;
+  --grey-100: 0, 0%, 53.3%;
+  --grey-300: 0, 0%, 21.9%;
+  --grey-400: 0, 0%, 18%;
+  --grey-500: 0, 0%, 15%;
+  --grey-600: 0, 0%, 13%;
+  --grey-650: 0, 0%, 11.8%;
+  --grey-700: 0, 0%, 10.6%;
+  --grey-800: 0, 0%, 9%;
+  --grey-900: 0, 0%, 7.1%;
+  --grey-1000: 0, 0%, 3.9%;
+  --white: 255, 255, 255;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: hsl(var(--grey-900));
+  color: #ffffff;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+::-webkit-scrollbar {
+  display: none
 }
