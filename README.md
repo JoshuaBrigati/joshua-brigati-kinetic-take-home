@@ -4,6 +4,10 @@ Here is a deployed UI only version: https://joshua-brigati-kinetic-take-home.ver
 - **This will not have the database setup so adding to cart won't actually do anything**
 - **There are steps below to get everything working in Docker**
 
+
+https://github.com/user-attachments/assets/024ab804-b421-4949-8253-3e18c7dd8d8f
+
+
 ## Introduction
 
 This NFT Marketplace is a full-stack web application that allows users to browse, select, and manage NFTs in a shopping cart. It's built with modern web technologies, focusing on performance, scalability, and user experience.
