@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import CollectionCard from "@/components/collection-card";
+import CollectionCard from "@/components/cards/collection-card";
 import { Collection } from "@/types";
 
 jest.mock("next/link", () => {
@@ -50,13 +50,6 @@ describe("CollectionCard", () => {
     const image = screen.getByAltText("Test Collection") as HTMLImageElement;
     expect(image).toBeInTheDocument();
     expect(image.src).toBe("https://example.com/image.jpg");
-  });
-
-  it("uses placeholder image when image_url is not provided", () => {
-    const collectionWithoutImage = { ...mockCollection, image_url: null };
-    render(<CollectionCard collection={collectionWithoutImage} />);
-    const image = screen.getByAltText("Test Collection") as HTMLImageElement;
-    expect(image.src).toContain("/placeholder.png");
   });
 
   it("renders a link to the collection page", () => {

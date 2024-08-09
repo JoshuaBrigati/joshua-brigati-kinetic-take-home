@@ -4,7 +4,7 @@ import React from "react";
 import { VirtuosoGrid } from "react-virtuoso";
 import { QueryFunction, QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
-import NFTCard from "@/components/nft-card";
+import NFTCard from "@/components/cards/nft-card";
 import { useCart } from "@/hooks/use-cart";
 import { Loader } from "lucide-react";
 import { NFT } from "@/types";
@@ -88,7 +88,7 @@ const NFTPage = ({ params }: { params: { slug: string } }) => {
   );
 
   return (
-    <div className="flex flex-col pt-12 h-screen" style={{ height: "calc(100vh-60px)" }}>
+    <div className="flex flex-col pt-24 h-screen" style={{ height: "calc(100vh-60px)" }}>
       <VirtuosoGrid
         data-testid="virtuoso-grid"
         style={{ height: "100%", width: "100%" }}

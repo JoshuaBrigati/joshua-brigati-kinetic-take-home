@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import Home from "@/app/page";
 
-jest.mock("@/components/collections-slider", () => ({
+jest.mock("@/components/mock-data-components/mock-collections-slider", () => ({
   __esModule: true,
   default: () => <div data-testid="mock-slider">Mocked Slider</div>,
 }));
 
-jest.mock("@/components/mock-data-nfts", () => ({
+jest.mock("@/components/mock-data-components/mock-data-nfts", () => ({
   __esModule: true,
   default: () => <div data-testid="mock-data-nfts">Mocked MockDataNFTs</div>,
 }));
@@ -32,7 +32,7 @@ describe("Home", () => {
     const { container } = render(<Home />);
     const mainDiv = container.firstChild as HTMLElement;
     
-    expect(mainDiv).toHaveClass("flex", "flex-col", "gap-20", "pt-12", "h-screen");
+    expect(mainDiv).toHaveClass("flex", "flex-col", "gap-20", "pt-24", "h-screen");
     expect(mainDiv).toHaveStyle({ height: "calc(100vh-60px)" });
 
     const sections = container.querySelectorAll(".flex.flex-col.gap-4");

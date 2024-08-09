@@ -38,7 +38,7 @@ describe("TopNav", () => {
     const header = container.firstChild as HTMLElement;
     
     expect(header.tagName).toBe("HEADER");
-    expect(header).toHaveClass("flex", "items-center", "gap-4", "border-b", "border-white/10", "bg-card");
+    expect(header).toHaveClass("flex", "items-center", "gap-4", "border-b", "border-white/10", "bg-grey-800/60");
   });
 
   it("has responsive styling classes", () => {

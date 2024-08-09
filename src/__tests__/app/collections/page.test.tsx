@@ -16,7 +16,7 @@ jest.mock("react-virtuoso", () => ({
     </div>
   ),
 }));
-jest.mock("@/components/collection-card", () => ({
+jest.mock("@/components/cards/collection-card", () => ({
   __esModule: true,
   default: ({ collection }: any) => <div data-testid={`collection-card-${collection.collection}`}>{collection.name}</div>,
 }));

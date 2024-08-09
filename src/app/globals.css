@@ -21,7 +21,7 @@
 }
 
 body {
-  background: hsl(var(--grey-900));
+  background: hsl(var(--grey-800));
   color: #ffffff;
 }
 

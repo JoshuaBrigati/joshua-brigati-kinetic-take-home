@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import CollectionCard from "./collection-card"
+import CollectionCard from "../cards/collection-card"
 import { collections } from "@/data/collections"
 import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react"
 

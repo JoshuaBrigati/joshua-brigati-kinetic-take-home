@@ -3,7 +3,7 @@ import { VirtuosoGrid } from "react-virtuoso";
 import { QueryFunctionContext, useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Collection } from "@/types";
-import CollectionCard from "@/components/collection-card";
+import CollectionCard from "@/components/cards/collection-card";
 import { Loader } from "lucide-react";
 
 interface APIResponse {

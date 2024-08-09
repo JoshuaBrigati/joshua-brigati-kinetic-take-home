@@ -1,6 +1,6 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import NFTCard from "@/components/nft-card";
+import NFTCard from "@/components/cards/nft-card";
 import { NFT } from "@/types";
 
 jest.mock("@/lib/utils", () => ({

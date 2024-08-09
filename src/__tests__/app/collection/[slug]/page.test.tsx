@@ -15,7 +15,7 @@ jest.mock("react-virtuoso", () => ({
     </div>
   ),
 }));
-jest.mock("@/components/nft-card", () => ({
+jest.mock("@/components/cards/nft-card", () => ({
   __esModule: true,
   default: ({ nft, handleCartClick }: any) => (
     <div data-testid={`nft-card-${nft.identifier}`} onClick={() => handleCartClick(nft)}>

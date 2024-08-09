@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@testing-library/jest-dom";
-import MockDataNFTs from "@/components/mock-data-nfts";
+import MockDataNFTs from "@/components/mock-data-components/mock-data-nfts";
 import { useCart } from "@/hooks/use-cart";
 import { nfts } from "@/data/nfts";
 
@@ -15,7 +15,7 @@ jest.mock("react-virtuoso", () => ({
     </div>
   ),
 }));
-jest.mock("@/components/nft-card", () => ({
+jest.mock("@/components/cards/nft-card", () => ({
   __esModule: true,
   default: ({ nft, handleCartClick }: any) => (
     <div data-testid={`nft-card-${nft.identifier}`} onClick={() => handleCartClick(nft)}>

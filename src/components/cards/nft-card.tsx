@@ -1,6 +1,6 @@
 
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Check, Plus } from "lucide-react";
 import { NFT } from "@/types";
 
@@ -20,8 +20,8 @@ const NFTCard = ({
   return (
     <div className="group relative overflow-hidden">
       <div data-testid="nft-card" className={cn(
-        "overflow-hidden rounded-lg bg-grey-700 shadow-sm border-[2px] relative border-grey-700",
-        inCart ? "border-[2px] border-primary" : "border-grey-700"
+        "overflow-hidden rounded-lg bg-grey-600 shadow-sm border-[2px] relative",
+        inCart ? "border-[2px] border-primary" : "border-grey-600"
       )}>
         <div className="relative">
           <div className="rounded-b-none">
@@ -31,7 +31,7 @@ const NFTCard = ({
               width="420"
               height="420"
               decoding="async"
-              className="aspect-square overflow-hidden rounded-t-lg object-cover group-hover:scale-110 transition-transform duration-300"
+              className="aspect-square overflow-hidden object-cover group-hover:scale-110 transition-transform duration-300"
               src={nft.image_url || ""}
             />
           </div>

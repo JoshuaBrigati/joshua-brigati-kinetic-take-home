@@ -1,6 +1,6 @@
 import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Slider from "@/components/collections-slider";
+import Slider from "@/components/mock-data-components/mock-collections-slider";
 
 jest.mock("keen-slider/react", () => ({
   useKeenSlider: jest.fn(() => {
@@ -16,7 +16,7 @@ jest.mock("keen-slider/react", () => ({
   }),
 }));
 
-jest.mock("@/components/collection-card", () => {
+jest.mock("@/components/cards/collection-card", () => {
   return function MockCollectionCard({ collection }: { collection: any }) {
     return <div data-testid={`collection-card-${collection.collection}`}>{collection.name}</div>;
   };
