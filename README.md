@@ -87,8 +87,10 @@ npm run dev
 
 3. **React Query**: Used for efficient server state management and caching, improving performance and user experience.
 
-4. **Tailwind CSS**: Adopted for rapid UI development and easy customization.
+4. **VirtuosoGrid**: I used VirtuosoGrid to render my large grids which used virtualized rendering. It also makes it easy to make infinite scroll. I used `useInfiniteQuery` from tanstack/react-query to set up infinite scroll on those pages.
 
-5. **Docker**: Implemented for consistent development and deployment environments.
+5. **Tailwind CSS**: Adopted for rapid UI development and easy customization.
 
-6. **Tests**: Used Jest to create some unit tests for components and pages.
+6. **Docker**: Implemented for consistent development and deployment environments.
+
+7. **Tests**: Used Jest to create some unit tests for components and pages.

@@ -36,7 +36,6 @@ const fetchNFTs: QueryFunction<APIResponse, QueryKey, string> = async ({
 const NFTPage = ({ params }: { params: { slug: string } }) => {
   const collectionSlug = params.slug;
   const { cart, addToCart, removeFromCart } = useCart();
-  console.log("🚀 ~ NFTPage ~ cart:", cart)
 
   const handleCartClick = (nft: NFT) => {
     const inCart = cart.some(

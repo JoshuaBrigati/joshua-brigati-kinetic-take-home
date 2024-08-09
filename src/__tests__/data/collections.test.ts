@@ -8,7 +8,6 @@ describe("Collections Data", () => {
 
   it("each collection should have the required properties", () => {
     collections.forEach((collection, index) => {
-      console.log(`Checking collection ${index + 1}: ${collection.name}`);
       expect(collection).toHaveProperty("collection");
       expect(collection).toHaveProperty("name");
       expect(collection).toHaveProperty("description");
