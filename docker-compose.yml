@@ -18,7 +18,8 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://user:password@db:5432/nftcart
+      DATABASE_URL: postgresql://user:password@db:5432/nftcart?schema=public
+      NODE_ENV: production
 
 volumes:
   postgres_data:

@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NFT Marketplace
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+This NFT Marketplace is a full-stack web application that allows users to browse, select, and manage NFTs in a shopping cart. It's built with modern web technologies, focusing on performance, scalability, and user experience.
 
-```bash
+## Features
+
+- Browse NFT collections
+- View individual NFT details
+- Add/remove NFTs to/from a shopping cart
+- Persistent shopping cart across sessions
+- Responsive design for various screen sizes
+
+## Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript
+- **Backend**: Next.js API Routes
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Styling**: Tailwind CSS
+
+## Prerequisites
+
+- Node.js (v14 or later)
+- npm (v6 or later)
+- Docker and Docker Compose
+- Git
+
+## Docker Setup (Optional)
+
+To run the entire application in Docker:
+
+1. Build the Docker image:
+docker build -t nft-marketplace .
+
+2. Run the application with Docker Compose:
+docker-compose up
+
+3. Access the application at [http://localhost:3000](http://localhost:3000).
+
+## Local Client - Docker DB
+
+1. Clone the repository:
+git clone https://github.com/JoshuaBrigati/joshua-brigati-kinetic-take-home.git
+
+2. Install dependencies:
+npm install
+
+3. Set up environment variables:
+Create a `.env` file in the root directory and add:
+DATABASE_URL="postgresql://user:password@localhost:5432/nftcart?schema=public"
+
+4. Start the PostgreSQL database using Docker:
+docker run --name postgres-dev -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=nftcart -p 5432:5432 -d postgres:13
+
+5. Initialize the database:
+npx prisma migrate dev --name init
+
+6. Run the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+7. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- `src/components/`: React components
+- `src/pages/`: Next.js pages and API routes
+- `src/lib/`: Utility functions and database setup
+- `prisma/`: Prisma schema and migrations
+- `public/`: Static assets
 
-## Learn More
+## Technicals
 
-To learn more about Next.js, take a look at the following resources:
+1. **Next.js**: Chosen for its server-side rendering capabilities, API routes, and excellent developer experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Prisma vs TypeORM**: Initially, we attempted to use TypeORM, but encountered integration issues with Next.js, particularly in API routes. We switched to Prisma for its better compatibility with Next.js and more straightforward setup in serverless environments.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. **React Query**: Used for efficient server state management and caching, improving performance and user experience.
 
-## Deploy on Vercel
+4. **Tailwind CSS**: Adopted for rapid UI development and easy customization.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. **Docker**: Implemented for consistent development and deployment environments.
