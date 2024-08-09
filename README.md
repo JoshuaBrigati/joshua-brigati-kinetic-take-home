@@ -19,6 +19,7 @@ This NFT Marketplace is a full-stack web application that allows users to browse
 - **Database**: PostgreSQL
 - **ORM**: Prisma
 - **Styling**: Tailwind CSS
+- **Testing**: Jest
 
 ## Prerequisites
 
@@ -32,7 +33,7 @@ This NFT Marketplace is a full-stack web application that allows users to browse
 To run the entire application in Docker:
 
 1. Build the Docker image:
-docker build -t nft-marketplace .
+docker build -t joshua-brigati-kinetic-take-home .
 
 2. Run the application with Docker Compose:
 docker-compose up
@@ -68,7 +69,7 @@ npm run dev
 - `src/pages/`: Next.js pages and API routes
 - `src/lib/`: Utility functions and database setup
 - `prisma/`: Prisma schema and migrations
-- `public/`: Static assets
+- `__tests__`: Jest unit tests
 
 ## Technicals
 
@@ -81,3 +82,5 @@ npm run dev
 4. **Tailwind CSS**: Adopted for rapid UI development and easy customization.
 
 5. **Docker**: Implemented for consistent development and deployment environments.
+
+6. **Tests**: Used Jest to create some unit tests for components and pages.
