@@ -1,5 +1,9 @@
 # NFT Marketplace
 
+Here is a deployed UI only version: https://joshua-brigati-kinetic-take-home.vercel.app/
+- **This will not have the database setup so adding to cart won't actually do anything**
+- **There are steps below to get everything working in Docker**
+
 ## Introduction
 
 This NFT Marketplace is a full-stack web application that allows users to browse, select, and manage NFTs in a shopping cart. It's built with modern web technologies, focusing on performance, scalability, and user experience.
